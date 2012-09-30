@@ -75,6 +75,13 @@ function admin_toggle_preprocess_block(&$vars) {
 }
 
 /**
+ * Implements hook_preprocess_toolbar().
+ */
+function admin_toggle_preprocess_toolbar(&$vars) {
+  $vars['classes_array'][] = 'admin-toggle';
+}
+
+/**
  * Return the jQuery selector for admin elements to toggle.
  *
  * @return
