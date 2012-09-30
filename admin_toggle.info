@@ -3,4 +3,3 @@ description = Provides functionality for hiding all administration markup on a p
 core = 7.x
 package = Administration
 configure = admin/config/administration/admin_toggle
-files[] = admin_toggle.js
