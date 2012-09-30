@@ -12,7 +12,7 @@ function admin_toggle_init() {
   if (user_access('use admin toggle')) {
     $settings = array(
       'adminToggle' => array(
-        'key' => variable_get('admin_toggle_key', '~'),
+        'key' => variable_get('admin_toggle_key', '`'),
         'selector' => admin_toggle_get_selector(),
       ),
     );
