@@ -37,6 +37,7 @@ function admin_toggle_init() {
       'adminToggle' => array(
         'key' => variable_get('admin_toggle_key', '`'),
         'selector' => admin_toggle_get_selector(),
+        'default' => admin_toggle_default(),
       ),
     );
     drupal_add_js($settings, 'setting');
@@ -93,4 +94,20 @@ function admin_toggle_toggle() {
   if (isset($_POST['admin_toggle'])) {
     $_SESSION['admin_toggle'] = $_POST['admin_toggle'];
   }
+}
+
+/**
+ * Get the default toggle state, either by a session variable or an admin
+ * preference.
+ *
+ * @return
+ *   Either 0 or 1, where 0 represents admin elements toggled off and 1
+ *   represents admin elements toggled on.
+ */
+function admin_toggle_default() {
+  if (isset($_SESSION['admin_toggle'])) {
+    return ($_SESSION['admin_toggle']);
+  }
+
+  return variable_get('admin_toggle_default', 1);
 }
