@@ -2,6 +2,10 @@
 
 Drupal.behaviors.adminToggle = {
   attach: function(context, settings) {
+    if (Drupal.settings.adminToggle.default == 0) {
+      adminToggle();
+    }
+
     $(document).keypress(function(e) {
       var unicode = e.keyCode ? e.keyCode : e.charCode;
       if (String.fromCharCode(unicode) == Drupal.settings.adminToggle.key) {
