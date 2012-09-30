@@ -1,0 +1,5 @@
+name = Admin Toggle
+description = Provides functionality for hiding all administration markup on a page with the tap of a button.
+core = 7.x
+package = Administration
+configure = admin/config/administration/admin_toggle
