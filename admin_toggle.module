@@ -4,3 +4,12 @@
  * @file
  * Module file for the Admin Toggle module.
  */
+
+/**
+ * Implements hook_init().
+ */
+function admin_toggle_init() {
+  if (user_access('toggle admin elements')) {
+    drupal_add_js(drupal_get_path('module', 'admin_toggle') . '/admin_toggle.js');
+  }
+}
