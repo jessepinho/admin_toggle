@@ -121,3 +121,58 @@ function admin_toggle_default() {
 
   return variable_get('admin_toggle_default', 1);
 }
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function admin_toggle_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  global $user;
+
+  // Get permissions for the anonymous user. (Role ID 1 is anonymous.)
+  $perms = user_role_permissions(array(1 => NULL));
+
+  // We're going to do a terrible, terrible thing. We're going to temporarily
+  // overwrite the global $user object, so that any access checks run by menu
+  // access callbacks will think they're dealing with an anonymous user. Then,
+  // we'll set the global $user object back to its original self.
+  $orig_user = clone $user;
+  $user = new stdClass();
+  $user->uid = 0;
+  $user->hostname = '::1';
+  $user->roles = array(1 => 'anonymous user');
+  $user->cache = 0;
+
+  // Iterate through each of the tabs, adding the 'admin-toggle-child' class to
+  // those which the anonymous user does not have access.
+  foreach ($data['tabs'] as &$tabs) {
+    if ($tabs['count']) {
+      $i = 0;
+      foreach ($tabs['output'] as &$tab) {
+        // We need to check user access for this menu item. We do this by
+        // creating a "map" out of the menu path's parts, and passing the menu
+        // item along with the map to _menu_check_access().
+        // @see _menu_translate(), _menu_check_access()
+        $item = $tab['#link'];
+        $map = _menu_translate($item, explode('/', $tab['#link']['path']));
+        _menu_check_access($item, $map);
+
+        // If an anonymous user would not have access to this item, increment
+        // $i.
+        if (!$item['access']) {
+          $i++;
+
+          // If we've reached the last item and all of the items are not
+          // anonymously accessible, add the 'admin-toggle-child' class to the
+          // last link. This will indicate to the JavaScript that its parent
+          // can be hidden.
+          if ($i == $tabs['count']) {
+            $tab['#link']['localized_options']['attributes'] = array('class' => array('admin-toggle-child'));
+          }
+        }
+      }
+    }
+  }
+
+  // Set the $user object back to its original self.
+  $user = $orig_user;
+}
