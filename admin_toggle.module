@@ -80,9 +80,10 @@ function admin_toggle_preprocess_block(&$vars) {
 function admin_toggle_get_selector() {
   // Build an array of selectors.
   $selectors = array(
-    variable_get('admin_toggle_custom_selector'),
-    '.admin-toggle',
     '.action-links',
+    '#admin-menu',
+    '.admin-toggle',
+    variable_get('admin_toggle_custom_selector'),
   );
   return implode(',', $selectors);
 }
