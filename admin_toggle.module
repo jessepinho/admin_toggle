@@ -54,6 +54,16 @@ function admin_toggle_permission() {
 }
 
 /**
+ * Implements hook_preprocess_block().
+ */
+function admin_toggle_preprocess_block(&$vars) {
+  $block = $vars['block'];
+  if ($block->module == 'system' && $block->delta == 'management') {
+    $vars['classes_array'][] = 'admin-toggle';
+  }
+}
+
+/**
  * Return the jQuery selector for admin elements to toggle.
  */
 function admin_toggle_get_selector() {
@@ -61,6 +71,7 @@ function admin_toggle_get_selector() {
   $selectors = array(
     variable_get('admin_toggle_custom_selector'),
     '.admin-toggle',
+    '.action-links',
   );
   return implode(',', $selectors);
 }
