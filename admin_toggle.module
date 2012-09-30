@@ -64,15 +64,3 @@ function admin_toggle_get_selector() {
   );
   return implode(',', $selectors);
 }
-
-/**
- * Implements hook_menu_local_tasks_alter().
- */
-function admin_toggle_menu_local_tasks_alter(&$data, $router_item, $root_path) {
-  dsm(func_get_args());
-  if ($data['actions']['count']) {
-    foreach ($data['actions']['output'] as $key => $val) {
-      $data['actions']['output'][$key]['#link']['localized_options']['attributes'] = array('class' => array('admin-toggle-child'));
-    }
-  }
-}
