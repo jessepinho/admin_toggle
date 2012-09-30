@@ -36,3 +36,13 @@ function admin_toggle_permission() {
     ),
   );
 }
+
+/**
+ * Return the jQuery selector for admin elements to toggle.
+ */
+function admin_toggle_get_selector() {
+  // Build an array of selectors.
+  $selectors = array();
+  $selectors[] = variable_get('admin_toggle_custom_selector');
+  return implode(',', $selectors);
+}
