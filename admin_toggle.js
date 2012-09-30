@@ -3,7 +3,7 @@
 Drupal.behaviors.adminToggle = {
   attach: function(context, settings) {
     if (Drupal.settings.adminToggle.default == 0) {
-      adminToggle();
+      adminToggle(true);
     }
 
     $(document).keypress(function(e) {
@@ -15,16 +15,26 @@ Drupal.behaviors.adminToggle = {
   }
 };
 
-function adminToggle() {
+function adminToggle(skipAnimation) {
   if (typeof adminToggle.flag == 'undefined' ) {
     adminToggle.flag = true;
   }
 
   if (adminToggle.flag) {
-    $(Drupal.settings.adminToggle.selector).hide();
+    if (skipAnimation) {
+      $(Drupal.settings.adminToggle.selector).hide();
+    }
+    else {
+      $(Drupal.settings.adminToggle.selector).fadeOut('fast');
+    }
   }
   else {
-    $(Drupal.settings.adminToggle.selector).show();
+    if (skipAnimation) {
+      $(Drupal.settings.adminToggle.selector).show();
+    }
+    else {
+      $(Drupal.settings.adminToggle.selector).fadeIn('fast');
+    }
   }
 
   adminToggle.flag = !adminToggle.flag;
