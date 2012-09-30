@@ -18,6 +18,12 @@ function admin_toggle_menu() {
     'file' => 'admin_toggle.admin.inc',
   );
 
+  $items['admin_toggle/toggle'] = array(
+    'title' => 'Admin Toggle',
+    'page callback' => 'admin_toggle_toggle',
+    'access arguments' => array('use admin toggle'),
+  );
+
   return $items;
 }
 
@@ -77,4 +83,13 @@ function admin_toggle_get_selector() {
     '.action-links',
   );
   return implode(',', $selectors);
+}
+
+/**
+ * Menu callback; toggle the user's show/hide preference.
+ */
+function admin_toggle_toggle() {
+  if (isset($_POST['admin_toggle'])) {
+    $_SESSION['admin_toggle'] = $_POST['admin_toggle'];
+  }
 }
