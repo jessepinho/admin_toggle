@@ -58,7 +58,9 @@ function admin_toggle_permission() {
  */
 function admin_toggle_get_selector() {
   // Build an array of selectors.
-  $selectors = array();
-  $selectors[] = variable_get('admin_toggle_custom_selector');
+  $selectors = array(
+    variable_get('admin_toggle_custom_selector'),
+    '.admin-toggle',
+  );
   return implode(',', $selectors);
 }
