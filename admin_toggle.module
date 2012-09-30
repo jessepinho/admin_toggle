@@ -22,6 +22,7 @@ function admin_toggle_menu() {
     'title' => 'Admin Toggle',
     'page callback' => 'admin_toggle_toggle',
     'access arguments' => array('use admin toggle'),
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
