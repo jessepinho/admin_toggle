@@ -87,8 +87,13 @@ function admin_toggle_get_selector() {
     '.action-links',
     '#admin-menu',
     '.admin-toggle',
-    variable_get('admin_toggle_custom_selector'),
+    '.tabs.primary:has(a.admin-toggle-child)',
   );
+
+  $custom = trim(variable_get('admin_toggle_custom_selector'));
+  if (!empty($custom)) {
+    $selectors[] = $custom;
+  }
   return implode(',', $selectors);
 }
 
