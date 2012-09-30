@@ -21,11 +21,11 @@ function admin_toggle_admin_form($form, &$form_state) {
     '#weight' => $w++,
   );
 
-  $form['admin_toggle_selector'] = array(
+  $form['admin_toggle_custom_selector'] = array(
     '#type' => 'textfield',
     '#title' => t('Custom selector(s)'),
     '#description' => t('Enter comma-separated selectors for additional admin items to toggle when the shortcut key is pressed.'),
-    '#default_value' => variable_get('admin_toggle_selector'),
+    '#default_value' => variable_get('admin_toggle_custom_selector'),
     '#weight' => $w++,
   );
 
