@@ -58,7 +58,10 @@ function admin_toggle_permission() {
  */
 function admin_toggle_preprocess_block(&$vars) {
   $block = $vars['block'];
-  if ($block->module == 'system' && $block->delta == 'management') {
+  if (
+    ($block->module == 'system' && $block->delta == 'management')
+    || $block->module == 'devel'
+  ) {
     $vars['classes_array'][] = 'admin-toggle';
   }
 }
