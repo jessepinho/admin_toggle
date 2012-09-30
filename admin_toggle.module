@@ -9,7 +9,23 @@
  * Implements hook_init().
  */
 function admin_toggle_init() {
-  if (user_access('toggle admin elements')) {
+  if (user_access('use admin toggle')) {
     drupal_add_js(drupal_get_path('module', 'admin_toggle') . '/admin_toggle.js');
   }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function admin_toggle_permission() {
+  return array(
+    'use admin toggle' => array(
+      'title' => t('Use Admin Toggle'),
+      'description' => t('Use Admin Toggle functionality.'),
+    ),
+    'administer admin toggle' => array(
+      'title' => t('Administer Admin Toggle'),
+      'description' => t('Modify settings for Admin Toggle.'),
+    ),
+  );
 }
