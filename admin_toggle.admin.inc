@@ -21,6 +21,18 @@ function admin_toggle_admin_form($form, &$form_state) {
     '#weight' => $w++,
   );
 
+  $form['admin_toggle_default'] = array(
+    '#type' => 'radios',
+    '#title' => t('Default toggle'),
+    '#description' => t('Choose whether to toggle admin items on or off by default.'),
+    '#options' => array(
+      1 => t('On'),
+      0 => t('Off'),
+    ),
+    '#default_value' => variable_get('admin_toggle_default', 1),
+    '#weight' => $w++,
+  );
+
   $form['admin_toggle_custom_selector'] = array(
     '#type' => 'textfield',
     '#title' => t('Custom selector(s)'),
