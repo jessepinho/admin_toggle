@@ -6,6 +6,22 @@
  */
 
 /**
+ * Implements hook_menu().
+ */
+function admin_toggle_menu() {
+  $items['admin/config/administration/admin_toggle'] = array(
+    'title' => 'Admin Toggle',
+    'description' => 'Modify Admin Toggle settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('admin_toggle_admin_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'admin_toggle.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_init().
  */
 function admin_toggle_init() {
