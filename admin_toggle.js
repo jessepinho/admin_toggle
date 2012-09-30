@@ -2,10 +2,13 @@
 
 Drupal.behaviors.adminToggle = {
   attach: function(context, settings) {
+    // If the admin toggle is set to 0 (hidden) by default, then toggle all
+    // admin items off.
     if (Drupal.settings.adminToggle.default == 0) {
       adminToggle(true);
     }
 
+    // Bind toggling functionality to the keypress set the in admin area.
     $(document).keypress(function(e) {
       var unicode = e.keyCode ? e.keyCode : e.charCode;
       if (String.fromCharCode(unicode) == Drupal.settings.adminToggle.key) {
@@ -16,6 +19,7 @@ Drupal.behaviors.adminToggle = {
 };
 
 function adminToggle(skipAnimation) {
+  // Set a flag, so that we know which way to toggle.
   if (typeof adminToggle.flag == 'undefined' ) {
     adminToggle.flag = true;
   }
@@ -37,9 +41,10 @@ function adminToggle(skipAnimation) {
     }
   }
 
+  // Toggle the flag.
   adminToggle.flag = !adminToggle.flag;
 
-  // Set a persistent toggle variable.
+  // Set a session toggle variable. This is done via POST for security reasons.
   var toggle = adminToggle.flag ? 1 : 0;
   $.post(
     Drupal.settings.basePath + 'admin_toggle/toggle',

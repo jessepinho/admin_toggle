@@ -76,6 +76,10 @@ function admin_toggle_preprocess_block(&$vars) {
 
 /**
  * Return the jQuery selector for admin elements to toggle.
+ *
+ * @return
+ *   A comma-separated list of selectors, to be passed to the jQuery()
+ *   function.
  */
 function admin_toggle_get_selector() {
   // Build an array of selectors.
