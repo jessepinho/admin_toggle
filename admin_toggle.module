@@ -102,7 +102,7 @@ function admin_toggle_get_selector() {
  */
 function admin_toggle_toggle() {
   if (isset($_POST['admin_toggle'])) {
-    $_SESSION['admin_toggle'] = $_POST['admin_toggle'];
+    $_SESSION['admin_toggle'] = (integer)$_POST['admin_toggle'];
   }
 }
 
