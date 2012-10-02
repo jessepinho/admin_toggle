@@ -124,8 +124,10 @@ function admin_toggle_toggle() {
 }
 
 /**
- * Get the default toggle state, either by a session variable or an admin
- * preference.
+ * Get the default toggle state.
+ *
+ * This is done by checking for the session variable first. If it isn't set,
+ * the setting from the admin configuration form is used.
  *
  * @return integer
  *   Either 0 or 1, where 0 represents admin elements toggled off and 1
