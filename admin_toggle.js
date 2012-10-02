@@ -20,7 +20,7 @@ Drupal.behaviors.adminToggle = {
 
 function adminToggle(skipAnimation) {
   // Set a flag, so that we know which way to toggle.
-  if (typeof adminToggle.flag == 'undefined' ) {
+  if (typeof adminToggle.flag == 'undefined') {
     adminToggle.flag = true;
   }
 
