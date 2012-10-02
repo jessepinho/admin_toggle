@@ -94,7 +94,7 @@ function admin_toggle_preprocess_toolbar(&$vars) {
 /**
  * Return the jQuery selector for admin elements to toggle.
  *
- * @return
+ * @return string
  *   A comma-separated list of selectors, to be passed to the jQuery()
  *   function.
  */
@@ -127,7 +127,7 @@ function admin_toggle_toggle() {
  * Get the default toggle state, either by a session variable or an admin
  * preference.
  *
- * @return
+ * @return integer
  *   Either 0 or 1, where 0 represents admin elements toggled off and 1
  *   represents admin elements toggled on.
  */
