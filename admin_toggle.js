@@ -53,4 +53,3 @@ function adminToggle(skipAnimation) {
 }
 
 })(jQuery);
-
