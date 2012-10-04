@@ -33,7 +33,7 @@ function adminToggle(skipAnimation) {
     }
 
     // Disable contextual links.
-    $('.contextual-links-region').removeClass('contextual-links-region').addClass('admin-toggle-contextual-links-region');
+    $('.contextual-links-region').removeClass('contextual-links-region').addClass('admin-toggle-contextual-links-region').find('.contextual-links-wrapper').hide();
   }
   else {
     if (skipAnimation) {
@@ -44,7 +44,7 @@ function adminToggle(skipAnimation) {
     }
 
     // Enable contextual links.
-    $('.admin-toggle-contextual-links-region').removeClass('admin-toggle-contextual-links-region').addClass('contextual-links-region');
+    $('.admin-toggle-contextual-links-region').removeClass('admin-toggle-contextual-links-region').addClass('contextual-links-region').find('.contextual-links-wrapper').show();
   }
 
   // Toggle the flag.
