@@ -31,6 +31,9 @@ function adminToggle(skipAnimation) {
     else {
       $(settings.adminToggle.selector).fadeOut('fast');
     }
+
+    // Disable contextual links.
+    $('.contextual-links-region').removeClass('contextual-links-region').addClass('admin-toggle-contextual-links-region');
   }
   else {
     if (skipAnimation) {
@@ -39,6 +42,9 @@ function adminToggle(skipAnimation) {
     else {
       $(settings.adminToggle.selector).fadeIn('fast');
     }
+
+    // Enable contextual links.
+    $('.admin-toggle-contextual-links-region').removeClass('admin-toggle-contextual-links-region').addClass('contextual-links-region');
   }
 
   // Toggle the flag.
