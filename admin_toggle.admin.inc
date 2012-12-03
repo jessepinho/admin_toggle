@@ -9,8 +9,6 @@
  * Provide a settings form.
  */
 function admin_toggle_admin_form($form, &$form_state) {
-  $weight = 0;
-
   $form['admin_toggle_key'] = array(
     '#type' => 'textfield',
     '#title' => t('Shortcut key'),
@@ -19,7 +17,6 @@ function admin_toggle_admin_form($form, &$form_state) {
     '#size' => 1,
     '#default_value' => variable_get('admin_toggle_key', '`'),
     '#required' => TRUE,
-    '#weight' => $weight++,
   );
 
   $form['admin_toggle_default'] = array(
@@ -31,7 +28,6 @@ function admin_toggle_admin_form($form, &$form_state) {
       0 => t('Off'),
     ),
     '#default_value' => variable_get('admin_toggle_default', 1),
-    '#weight' => $weight++,
   );
 
   $form['admin_toggle_custom_selector'] = array(
@@ -39,7 +35,6 @@ function admin_toggle_admin_form($form, &$form_state) {
     '#title' => t('Custom selector(s)'),
     '#description' => t('Enter comma-separated selectors for additional admin items to toggle when the shortcut key is pressed.'),
     '#default_value' => variable_get('admin_toggle_custom_selector'),
-    '#weight' => $weight++,
   );
 
   return system_settings_form($form);
