@@ -16,6 +16,7 @@ function admin_toggle_admin_form($form, &$form_state) {
     '#title' => t('Shortcut key'),
     '#description' => t('Type the key that will be used to toggle the visibility of admin items.'),
     '#maxlength' => 1,
+    '#size' => 1,
     '#default_value' => variable_get('admin_toggle_key', '`'),
     '#required' => TRUE,
     '#weight' => $weight++,
