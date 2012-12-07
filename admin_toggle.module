@@ -172,11 +172,12 @@ function admin_toggle_menu_local_tasks_alter(&$data, $router_item, $root_path) {
         // item along with the map to _menu_check_access().
         // @see _menu_translate(), _menu_check_access()
         $item = $tab['#link'];
-        if (substr($item['path'], 0, 5) == 'user/') {
+        if (substr($item['path'], 0, 5) == 'user/' || substr($item['path'], 0, 6) == 'admin/') {
           // Since we're dealing with an anonymous user, viewing
-          // profile-related pages triggers a bunch of PHP warnings when
-          // _menu_translate() is run. As an anonymous user has no profile
-          // anyway, simply set access to FALSE.
+          // profile-related pages or certain admin pages triggers a bunch of
+          // PHP warnings when _menu_translate() is run. As an anonymous user
+          // has no profile and can presumably never access admin pages anyway,
+          // simply set access to FALSE.
           $item['access'] = FALSE;
         }
         else {
